@@ -2,17 +2,17 @@
 # import project to call it back
 # project.foo(), normal function call
 
-from . import music
-
+from music import *
+from essentials import *
 
 def main_menu():
-    while True:
-        print("Options")
-        print("\t(1) Quit")
-        try:
-            user_option = int(input("Enter option: "))
-        except:
-            print("Invalid option!")
-            continue
-        break
-    music.get_genre()
+    print("Welcome to MusyFilm\n")
+    opening_choice = chooseFromList("Which option would you like to randomly generate?: ", ["movie", "music"])
+    match (opening_choice):
+        case "movie":
+            print("mave")
+        case "music":
+            print(get_music_genre())
+
+if __name__ == "__main__":
+    main_menu()
