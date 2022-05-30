@@ -2,6 +2,9 @@
 # import project to call it back
 # project.foo(), normal function call
 
+from . import music
+
+
 def main_menu():
     while True:
         print("Options")
@@ -12,3 +15,4 @@ def main_menu():
             print("Invalid option!")
             continue
         break
+    music.get_genre()
