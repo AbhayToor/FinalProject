@@ -15,5 +15,5 @@ def chooseFromList(prompt, list):
 
 def get_response(URL):
     payload = urllib.request.urlopen(URL)
-    response = eval(payload.read().decode("utf-8"))
+    response = eval(payload.read())
     return response
