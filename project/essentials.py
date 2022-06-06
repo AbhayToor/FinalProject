@@ -11,9 +11,9 @@ def chooseFromList(prompt, list):
             if choice >= 1 and choice <= len(list):
                 return list[choice - 1]
             else:
-                print("\nInvalid choice!\n")
+                print("\nInvalid choice!")
         except:
-            print("\nNot a valid number!\n")
+            print("\nNot a valid number!")
 
 
 def get_response(URL):
