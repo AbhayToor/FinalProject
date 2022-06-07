@@ -5,6 +5,7 @@ import urllib.parse
 APIKey = "96fb158442ef3c34115a7fa8a1c9acdb"
 URL = "http://ws.audioscrobbler.com/2.0/"
 
+
 def get_music_genre():
     endpoint = URL + f"?method=tag.getTopTags&api_key={APIKey}&format=json"
     response = essentials.get_response(endpoint)
@@ -28,7 +29,8 @@ def get_songs(genre):
             f"?method=track.getTopTags&api_key={APIKey}&artist={artist}&track={name}&format=json&user=RJ"
         response = essentials.get_response(endpoint)
         print(response)
-        # If any of the toptags in response are genre add song and artist to songs
+        # Todo: Check through all the top tags from response; use response to get the top tags from the response objects
+        # Todo: If any of the toptags in response are genre add song and artist to song list
 
 
 def music_menu():
