@@ -3,6 +3,7 @@
 # project.foo(), normal function call
 
 from . import music
+from . import movie
 from . import essentials
 
 
@@ -17,10 +18,11 @@ def main_menu():
                 input("Are you interested in Movies or Music: ")).lower().strip()
             if opening_choice == "music":
                 music.music_menu()
+            elif opening_choice == "movie":
+                movie.movie_menu()
         except:
             print("Invalid Option!")
             continue
-        break
 
 
 if __name__ == "__main__":
