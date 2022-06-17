@@ -1,15 +1,12 @@
 import essentials
 import urllib.parse
-import random
+
+from essentials import *
 
 APIKey = "96fb158442ef3c34115a7fa8a1c9acdb"
 URL = "http://ws.audioscrobbler.com/2.0/"
 
-
 def get_music_genre():
-    """ (list)
-    Returns the genres from the API dictionary
-    """
     endpoint = URL + f"?method=tag.getTopTags&api_key={APIKey}&format=json"
     response = essentials.get_response(endpoint)
     genres = []
@@ -47,29 +44,6 @@ def get_songs(genre):
 
 
 def music_menu():
-    """ (string) -> int
-    Gets user input for genre and validates the input
-    >>> Music
-    '1 rock'
-    '2 electronic'
-    '3 seen live'
-    '4 alternative'
-    '5 indie'
-    '6 pop'
-    '7 female vocalists'
-    '8 metal' 
-    """
     genres = get_music_genre()
-    print("Pick one of the following genres")
-    for i in range(8):
-        print(f"{i + 1} {genres[i]}")
-    pick_genre = int(input("Choose a genre: "))
-
-    while pick_genre < 1 or pick_genre > 8:
-        print("Invalid genre")
-        pick_genre = int(input("Choose a genre: "))
-    genre = genres[pick_genre - 1]
+    genre = chooseFromList("Choose a genre: ", genres)
     songs = get_songs(genre)
-    choice = random.randrange(0, len(songs))
-    song, artist = songs[choice]
-    print(f"{song} by {artist}")

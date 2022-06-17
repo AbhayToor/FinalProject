@@ -2,27 +2,22 @@
 # import project to call it back
 # project.foo(), normal function call
 
-from . import music
-from . import movie
-from . import essentials
-
+import music
+import movie
+from essentials import *
 
 def main_menu():
+    print("Welcome to MusyFilm")
     while True:
-        print("Welcome to MusyFilm!\n")
-        print("Options: \n")
-        print("\t Music")
-        print("\t Movie")
-        try:
-            opening_choice: str = (
-                input("Are you interested in Movies or Music: ")).lower().strip()
-            if opening_choice == "music":
-                music.music_menu()
-            elif opening_choice == "movie":
+        opening_choice = chooseFromList("Which option would you like to randomly generate?: ", ["movie", "music"])
+        match (opening_choice):
+            case "movie":
                 movie.movie_menu()
-        except:
-            print("Invalid Option!")
-            continue
+            case "music":
+                music.music_menu()
+        replay_randomizer = chooseFromList("Would you like to replay the randomizer?: ", ["True", "False"])
+        if replay_randomizer == "False":
+            break
 
 
 if __name__ == "__main__":
