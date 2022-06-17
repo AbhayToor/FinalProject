@@ -4,19 +4,23 @@
 # Description: This program ...
 # ==============================================================================
 
-# functions for main menu
-# import project to call it back
-# project.foo(), normal function call
-
 from . import music
 from . import movie
 from . import essentials
 
 
 def main_menu():
+    '''
+    () -> ()
+
+    Takes user input from console based on options
+
+    Prints the interface and validates the users input
+
+    '''
     while True:
         print("Welcome to MusyFilm!\n")
-        print("Options: ")
+        print("Options: \n")
         print("\t Music")
         print("\t Movie")
         try:
@@ -29,11 +33,6 @@ def main_menu():
         except:
             print("Invalid Option!")
             continue
-
-
-def second_menu():
-    while True:
-        print("What do you want to do?")
 
 
 if __name__ == "__main__":

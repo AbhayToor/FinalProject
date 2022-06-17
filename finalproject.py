@@ -1,8 +1,7 @@
 # ==============================================================================
 # Author: Abhay Toor & Raafay Qureshi
 # Title: MusyFilm
-# Description: This program is called MusyFilm. It allows users to choose either
-# a movie or music.
+# Description: This program ...
 # ==============================================================================
 
 # Todo: Final Project
