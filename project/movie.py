@@ -1,4 +1,8 @@
-# Movies by Raafay
+# ==============================================================================
+# Author: Abhay Toor & Raafay Qureshi
+# Title: MusyFilm
+# Description: This program ...
+# ==============================================================================
 
 from . import essentials
 import random

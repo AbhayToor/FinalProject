@@ -1,4 +1,10 @@
-import essentials
+# ==============================================================================
+# Author: Abhay Toor & Raafay Qureshi
+# Title: MusyFilm
+# Description: This program ...
+# ==============================================================================
+
+from . import essentials
 import urllib.parse
 import random
 
@@ -7,9 +13,6 @@ URL = "http://ws.audioscrobbler.com/2.0/"
 
 
 def get_music_genre():
-    """ (list)
-    Returns the genres from the API dictionary
-    """
     endpoint = URL + f"?method=tag.getTopTags&api_key={APIKey}&format=json"
     response = essentials.get_response(endpoint)
     genres = []
@@ -19,9 +22,6 @@ def get_music_genre():
 
 
 def get_songs(genre):
-    """ (list)
-    Gets name of songs and artist from dictionary
-    """
     endpoint = URL + f"?method=chart.gettoptracks&api_key={APIKey}&format=json"
     response = essentials.get_response(endpoint)
     tracks = []
@@ -47,27 +47,14 @@ def get_songs(genre):
 
 
 def music_menu():
-    """ (string) -> int
-    Gets user input for genre and validates the input
-    >>> Music
-    '1 rock'
-    '2 electronic'
-    '3 seen live'
-    '4 alternative'
-    '5 indie'
-    '6 pop'
-    '7 female vocalists'
-    '8 metal' 
-    """
     genres = get_music_genre()
     print("Pick one of the following genres")
-    for i in range(8):
+    for i in range(18):
         print(f"{i + 1} {genres[i]}")
-    pick_genre = int(input("Choose a genre: "))
 
     while pick_genre < 1 or pick_genre > 8:
         print("Invalid genre")
-        pick_genre = int(input("Choose a genre: "))
+        pick_genre = int(input("Choose a music genre: ")).lower()
     genre = genres[pick_genre - 1]
     songs = get_songs(genre)
     choice = random.randrange(0, len(songs))

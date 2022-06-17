@@ -1,3 +1,9 @@
+# ==============================================================================
+# Author: Abhay Toor & Raafay Qureshi
+# Title: MusyFilm
+# Description: This program ...
+# ==============================================================================
+
 # functions for main menu
 # import project to call it back
 # project.foo(), normal function call
@@ -10,7 +16,7 @@ from . import essentials
 def main_menu():
     while True:
         print("Welcome to MusyFilm!\n")
-        print("Options: \n")
+        print("Options: ")
         print("\t Music")
         print("\t Movie")
         try:
@@ -23,6 +29,11 @@ def main_menu():
         except:
             print("Invalid Option!")
             continue
+
+
+def second_menu():
+    while True:
+        print("What do you want to do?")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,12 @@
+# ==============================================================================
+# Author: Abhay Toor & Raafay Qureshi
+# Title: MusyFilm
+# Description: This program ...
+# ==============================================================================
+
 from urllib.request import urlopen
 import json
+
 
 def chooseFromList(prompt, list):
     while True:
