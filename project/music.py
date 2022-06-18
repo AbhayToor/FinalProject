@@ -1,7 +1,10 @@
 # ==============================================================================
 # Author: Abhay Toor & Raafay Qureshi
 # Title: MusyFilm
-# Description: This program ...
+# Description: This program allows the users to choose between two options,
+#              movie or music. Using APIs it generates the top 18 genres
+#              from the two options. Then, using random module and the API
+#              a random top track and artist from that genre is generated.
 # ==============================================================================
 
 from . import essentials
@@ -14,9 +17,8 @@ URL = "http://ws.audioscrobbler.com/2.0/"
 
 
 def get_music_genre():
-    '''
-    () -> (list)
-    Outputting genres from a dictionary of options
+    '''() -> list[str]
+    Outputs genre options from the API
 
     '''
     endpoint = URL + f"?method=tag.getTopTags&api_key={APIKey}&format=json"
@@ -28,13 +30,9 @@ def get_music_genre():
 
 
 def get_songs(genre):
-    '''
-    (int) -> (list)
-    Returns a list of songs that have been extracted from dictionary
+    '''(int) -> list[(str, str)]
+    Returns a list of songs that have been extracted from a JSON object
 
-    Parameters
-        ----------
-        genre : int
     '''
     endpoint = URL + f"?method=chart.gettoptracks&api_key={APIKey}&format=json"
     response = essentials.get_response(endpoint)
@@ -64,22 +62,19 @@ def get_songs(genre):
 
 
 def music_menu():
-    '''
-    () -> ()
+    '''() -> 
     Prints out a random generated song based on user input
 
     Allows the user to choose a genre using an int value
 
     '''
     genres = get_music_genre()
-    print("Pick one of the following genres")
     # Prints out the list of genres with numbers
     for i in range(18):
-        print(f"{i + 1} {genres[i]}")
+        print(f"\t{i + 1}. {genres[i]}")
     print(" ")
     # User input to choose genre
-    pick_genre = int(input("Choose a music genre: "))
-
+    pick_genre = int(input("Choose a music genre (#): "))
     # Keeps asking the user until a valid input is given
     while pick_genre < 1 or pick_genre > 18:
         print("Invalid genre!")

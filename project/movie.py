@@ -1,7 +1,10 @@
 # ==============================================================================
 # Author: Abhay Toor & Raafay Qureshi
 # Title: MusyFilm
-# Description: This program ...
+# Description: This program allows the users to choose between two options,
+#              movie or music. Using APIs it generates the top 18 genres
+#              from the two options. Then, using random module and the API
+#              a random top track and artist from that genre is generated.
 # ==============================================================================
 
 from . import essentials
@@ -12,11 +15,10 @@ API_Key = "bf12efc4be93154c3162660bbc44bba8"
 
 
 def get_movie_genre():
-    ''' 
-    () -> (str, int)
+    ''' () -> (str, int)
     Returns the movie genre and movie genre id
 
-    Requires a movie library using an API 
+    Requires a network connection for the movie library using an API 
 
     '''
     endpoint = f"{URL}/genre/movie/list?api_key={API_Key}&language=en-US"
@@ -31,22 +33,18 @@ def get_movie_genre():
     # This prompts the user to pick a genre id
     # Which is saved as a variable for future use
     chosen_genre = essentials.chooseFromList(
-        "Choose a movie genre: ", list_of_genres)
+        "Choose a movie genre (#): ", list_of_genres)
     index = list_of_genres.index(chosen_genre)
     genre_id = list_of_genre_ids[index]
     return chosen_genre, genre_id
 
 
 def get_movies_by_genre(genre_id):
-    '''
-    (int) -> ()
+    '''(int) -> 
     Get random movie from the dictionary of options
 
-    Requires a index value to select option
+    Requires an index value to select option
 
-    Parameters
-        ----------
-        genre_id : int
     '''
     endpoint = f"{URL}/discover/movie?api_key={API_Key}&with_genres={genre_id}&sort_by=popularity.desc"
     response = essentials.get_response(endpoint)
@@ -65,8 +63,8 @@ def get_movies_by_genre(genre_id):
 
 
 def movie_menu():
-    '''
-    () -> ()
+    '''() -> 
+
     A void function that calls previous functions and prints out random movies
 
     '''
